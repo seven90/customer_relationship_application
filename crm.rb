@@ -73,16 +73,8 @@ class CRM
 	end 
 
 	def display_an_attribute
-		puts "What attributes do you want to display?"
-		puts " [1] First names [2] Last names [3] Emails [4] Notes "
-		user_choice = gets.chomp.to_i
-		case user_choice 
-		when 1 then @rolodex.contacts.map { |x| puts "#{x.first_name}"  }
-		when 2 then @rolodex.contacts.map { |x| puts "#{x.last_name}"  }
-		when 3 then @rolodex.contacts.map { |x| puts "#{x.email}"  }
-		when 4 then @rolodex.contacts.map { |x| puts "#{x.note}"  }	
-		end
-		main_menu	
+		@rolodex.display_an_attribute
+		main_menu
 	end
 
 	def self.run(name)
