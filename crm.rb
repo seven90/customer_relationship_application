@@ -7,18 +7,19 @@ class CRM
 	end
 
 	def print_main_menu
-		puts "[1] Add a new contact"
-		puts "[2] Modify an existing contact"
-		puts "[3] Delete a contact"
-		puts "[4] Display all the contacts"
-		puts "[5] Display an attribute"
-		puts "[6] Exit"
-		puts "Enter a number:"
+		puts "[Add] Add a new contact"
+		puts "[Modify] Modify an existing contact"
+		puts "[Display All] Display all the contacts"
+		puts "[Display Contact] Display one specific contact"
+		puts "[Display Attribute] Display an attribute"
+		puts "[Delete] Delete a contact"
+		puts "[Exit] Exit"
+		puts "Enter a command:"
 	end
 
 	def main_menu
 		print_main_menu
-		user_selected = gets.to_i
+		user_selected = gets.downcase
 		call_option(user_selected)
 	end
 
