@@ -1,9 +1,9 @@
-# require_relative "contact"
-# require_relative "rolodex"
+require_relative 'contact'
+require_relative 'rolodex'
 
 class CRM
 
-	attr_reader :name
+	attr_accessor :name
 	
 	def initialize(name)
 		@name = name
@@ -48,7 +48,7 @@ class CRM
 		first_name = gets.chomp
 		print "Enter Last Name:"
 		last_name = gets.chomp
-		print "Enter Email Address"
+		print "Enter Email Address: "
 		email = gets.chomp
 		print "Enter a Note: "
 		note = gets.chomp
@@ -57,30 +57,12 @@ class CRM
 		main_menu 
 	end
 
-class Contact
-	attr_accessor :id, :first_name, :last_name, :email, :note
+	def display_all_contacts
+		@rolodex.contacts.map {|name| p "#{name.first_name} #{name.last_name}"}
 
-	def initialize(first_name, last_name, email, note)
-		@first_name = first_name
-		@last_name = last_name
-		@email = email
-		@note = note
-	end
-end
-
-class Rolodex
-	def initialize
-		@contacts = []
-		@contact_id = 1000
 	end
 
-	def add_contact(contact)
-		@contacts << contact
-		contact.id = @contact_id
-		@contact_id +=1
-	end	
-end	
-
+	
 	def self.run(name)
 		crm = CRM.new(name)
 		crm.main_menu
