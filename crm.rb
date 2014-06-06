@@ -59,10 +59,12 @@ class CRM
 
 	def display_all_contacts
 		@rolodex.contacts.map {|name| p "#{name.first_name} #{name.last_name}"}
+	end 
 
-	end
+	def modify_existing_contact
+		@rolodex.modify_contact
+	end	
 
-	
 	def self.run(name)
 		crm = CRM.new(name)
 		crm.main_menu
