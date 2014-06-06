@@ -56,14 +56,34 @@ class CRM
 		
 		main_menu 
 	end
+	
+	def modify_existing_contact
+		@rolodex.modify_contact
+		main_menu
+	end	
+	
+	def delete_a_contact
+		@rolodex.delete_contact
+		main_menu
+	end	
 
 	def display_all_contacts
 		@rolodex.contacts.map {|name| p "#{name.first_name} #{name.last_name}"}
+		main_menu
 	end 
 
-	def modify_existing_contact
-		@rolodex.modify_contact
-	end	
+	def display_an_attribute
+		puts "What attributes do you want to display?"
+		puts " [1] First names [2] Last names [3] Emails [4] Notes "
+		user_choice = gets.chomp.to_i
+		case user_choice 
+		when 1 then @rolodex.contacts.map { |x| puts "#{x.first_name}"  }
+		when 2 then @rolodex.contacts.map { |x| puts "#{x.last_name}"  }
+		when 3 then @rolodex.contacts.map { |x| puts "#{x.email}"  }
+		when 4 then @rolodex.contacts.map { |x| puts "#{x.note}"  }	
+		end
+		main_menu	
+	end
 
 	def self.run(name)
 		crm = CRM.new(name)

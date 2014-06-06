@@ -24,9 +24,7 @@ class Rolodex
 				when 2 then next
 				else puts "Error"
 				end 
-			
 			end 
-		
 	end	
 
 	def modify_contact 
@@ -40,13 +38,30 @@ class Rolodex
 		case user_select
 		when 1 then puts "What would you like to change it to?"
 		@contact_to_modify.first_name = gets.chomp
+		puts "New name is: #{@contact_to_modify.first_name}" 
+		when 2 then puts "What would you like to change it to?"
+		@contact_to_modify.last_name = gets.chomp
+		puts "New name is: #{@contact_to_modify.last_name}"
+		when 3 then puts "What would you like to change it to?"
+		@contact_to_modify.email = gets.chomp
+		puts "New email is #{@contact_to_modify.email}"
+		when 4 then puts "What would you like to change it to?"
+		@contact_to_modify.note = gets.chomp
+		puts "New note is #{@contact_to_modify.note}" 
+		else 
+			find_contact
 		end
-		puts @contact_to_modify.first_name	
-		puts @contacts[0].first_name
+		
 	end		
 
-	def delete_a_contact
-		puts "Working"
+	def delete_contact
+		find_contact
+		puts "Do you want to delete #{@contact_to_modify.first_name} #{@contact_to_modify.last_name}"
+		user_select = gets.chomp.to_s.upcase
+		case user_select 
+		when "Y" then @contacts.delete(@contact_to_modify)
+		when "N" then find_contact
+		end	
 	end
 		
 
