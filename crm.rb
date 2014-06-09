@@ -8,6 +8,7 @@ class CRM
 	def initialize(name)
 		@name = name
 		@rolodex = Rolodex.new
+		puts "\e[H\e[2J"
 		puts "Welcome to #{name}"
 	end
 
@@ -53,7 +54,12 @@ class CRM
 		print "Enter a Note: "
 		note = gets.chomp
 		@rolodex.add_contact(Contact.new(first_name, last_name, email, note)) 
-		
+		puts "New Contact created:"
+		puts "Name: #{first_name} #{last_name}"
+		puts "Email: #{email}"
+		puts "Note: #{note}"
+		gets
+		puts "\e[H\e[2J"
 		main_menu 
 	end
 	
@@ -69,6 +75,8 @@ class CRM
 
 	def display_all_contacts
 		@rolodex.contacts.map {|name| p "#{name.first_name} #{name.last_name}"}
+		gets 
+		puts "\e[H\e[2J"
 		main_menu
 	end 
 
